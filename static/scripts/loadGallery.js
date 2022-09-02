@@ -5,7 +5,7 @@ fetch('/data/gallery.json').then(resp => resp.json(), { cache: 'no-store' }).the
         var slide=resp.gallery[v];
         console.log(slide.image);
         console.log(slide.caption);
-        document.getElementById('galleryContainer').innerHTML +=`
+        document.getElementById('slideContainer').innerHTML +=`
         <div class="slides fade">
         <img src="data/gallery_images/`+slide.image+`" style="width:100%">
         <div class="caption-text">`+slide.caption+`</div>
