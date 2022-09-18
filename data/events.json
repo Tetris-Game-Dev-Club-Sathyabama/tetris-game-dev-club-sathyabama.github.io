@@ -1,9 +1,9 @@
 {"events": {
     "1": {
         "image": "1.png",
-        "title": "Event Name",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident voluptatum facilis voluptatibus fugit sunt tenetur minus totam laboriosam error, amet ex eius et maiores quasi veniam blanditiis sequi excepturi. Sit?",
-        "isComplete": false,
-        "registrationLink": "https://www.google.com/"
+        "title": "Game Development Workshop",
+        "description": "An amazing workshop held over two days to find and bring out budding game developers and introducing others to the world of game development through building an endless runner game.",
+        "isComplete": true,
+        "registrationLink": ""
     }
 }}
