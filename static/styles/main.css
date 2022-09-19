@@ -88,6 +88,9 @@ html {
         align-items: center;
     }
 }
+.galleryslide{
+  display: flex;
+}
 .galleryContainer {
   max-width: 800px;
   margin: auto;
