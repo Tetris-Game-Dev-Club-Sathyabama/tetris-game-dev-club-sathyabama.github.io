@@ -1,19 +1,34 @@
 let slideIndex = 1;
 
+
 fetch('/data/gallery.json').then(resp => resp.json(), { cache: 'no-store' }).then(resp => {
+    let slideparent = 0;
+    let firstimage="";
+    let firstcaption="";
     Object.keys(resp.gallery).forEach((v,i) => {
-        var slide=resp.gallery[v];
-        console.log(slide.image);
-        console.log(slide.caption);
+      if(i>3*slideparent-1||i==0)
+      {
+        if(i==0)
+        {
+          firstimage=resp.gallery[v].image;
+          firstcaption=resp.gallery[v].caption;
+        }
+        slideparent++;
         document.getElementById('slideContainer').innerHTML +=`
         <div class="slides fade">
-        <img src="data/gallery_images/`+slide.image+`" style="width:100%">
-        <div class="caption-text">`+slide.caption+`</div>
-      </div>
-        `   
-        document.getElementById('dotContainer').innerHTML+=`<span class="dot" onclick="currentSlide(`+(i+1)+`)"></span>`
+        <div class="galleryslide" id="slideParent${String(slideparent-1)}">
+        </div>
+        </div>
+        `;
+        document.getElementById('dotContainer').innerHTML+=`<span class="dot" onclick="currentSlide(${String(slideparent)})"></span>`
+
+      }
+        var slide=resp.gallery[v];
+        console.log(i);
+        document.getElementById('slideParent'+String(slideparent-1)).innerHTML +=`<img onclick="mainview(\'${slide.image}\',\'${slide.caption}\')" src="data/gallery_images/${slide.image}" style="width:100%; padding:10px" >`
     });
 showSlides(slideIndex);
+mainview(firstimage,firstcaption);
 })
 
 function plusSlides(n) {
@@ -22,6 +37,12 @@ function plusSlides(n) {
 
 function currentSlide(n) {
   showSlides(slideIndex = n);
+}
+function mainview(imageName,imagecaption)
+{
+  // galleryimg
+  document.getElementById("galleryimg").src="data/gallery_images/"+imageName;
+  document.getElementById("galleryimgcaption").innerHTML=imagecaption;
 }
 function showSlides(n) {
   let i;
